@@ -684,8 +684,11 @@
                                 <label for="filUploadIcon" class="file-label" ref="iconInputLabel">
                                     <input id="filUploadIcon" tabindex="-1" class="file-input" type="file" accept="image/*" v-on:change="uploadIcon" ref="iconInput">
                                     <span class="file-cta">
+                                        <span class="icon">
+                                            <LucideImageUp />
+                                        </span>
                                         <span class="file-label">
-                                            <LucideHardDriveUpload class="mr-2" />{{ $t('label.choose_image') }}
+                                            <span class="is-hidden-mobile ml-1">{{ $t('label.choose_image') }}</span>
                                         </span>
                                     </span>
                                 </label>
