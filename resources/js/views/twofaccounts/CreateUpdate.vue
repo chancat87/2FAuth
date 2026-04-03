@@ -109,9 +109,9 @@
     const fetchingLogo = ref(false)
     const iconCollection = ref(user.preferences.iconCollection)
     const iconCollectionVariant = ref(user.preferences.iconVariant)
-    const iconPack = ref(user.preferences.iconPack)
+    const iconPack = ref(user.preferences.iconPack ?? '/')
     const iconPacks = ref([
-        user.preferences.iconPack
+        { text: 'label.no_available_icon_packs', value: '/' }
     ])
     const hasSomeIconPack = ref(false)
     const isLoading = ref(false)
@@ -671,7 +671,7 @@
                     <div class="field is-grouped">
                         <!-- try my luck button -->
                         <div class="control">
-                            <VueButton @click="fetchLogo" :color="mode == 'dark' ? 'is-dark' : ''" nativeType="button" :is-loading="fetchingLogo" :disabled="!form.service || !hasSomeIconPack" aria-describedby="lgdTryMyLuck">
+                            <VueButton @click="fetchLogo" :color="mode == 'dark' ? 'is-dark' : ''" nativeType="button" :is-loading="fetchingLogo" :disabled="!form.service || (user.preferences.iconSource == 'iconpack' && !hasSomeIconPack)" aria-describedby="lgdTryMyLuck">
                                 <span class="icon is-small">
                                     <LucideWandSparkles />
                                 </span>
